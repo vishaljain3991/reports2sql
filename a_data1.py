@@ -5,9 +5,9 @@ import extract_name
 from extract_name import extractor
 from a_name import analysts
 from dates import converter
-#conn = psycopg2.connect(database="finance", user="finance", password="iof2014", host="127.0.0.1", port="5432")
+
 d=0
-fo = open("/home/finance/r_fil_loc.txt", "rb+")
+fo = open("/home/finance/reports2sql/r_fil_date.txt", "rb+")
 raw=fo.read()
 locs=nltk.word_tokenize(raw)
 #print locs
@@ -19,7 +19,7 @@ for t in locs:
 for t in locs:
 	d=d+extractor(t)
 
-print d
+#print d
 #conn.close()
 """tok=nltk.word_tokenize(string)
 tok=tok[1:]
