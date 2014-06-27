@@ -1,0 +1,69 @@
+Follow these steps to form a database which consists of relevant features such as name, position, department etc of analyst 1 and 2.
+
+1. Open a new terminal and write 
+	$psql
+2. Previous step will open posgresql command line. Now copy and paste this command to form a new database 
+	CREATE TABLE RATINGS(
+	C_ID INT NOT NULL,
+	A1_LOCATION VARCHAR(50) NOT NULL,
+	A1_NAME VARCHAR(50) NOT NULL,
+	A1_POS VARCHAR(50) NOT NULL,
+	A1_DEPT VARCHAR(50) NOT NULL,
+	A2_LOCATION VARCHAR(50) NOT NULL,
+	A2_NAME VARCHAR(50) NOT NULL,
+	A2_POS VARCHAR(50) NOT NULL,
+	A2_DEPT VARCHAR(50) NOT NULL,
+	RATINGS_DATE DATE
+	A1_ADD VARCHAR(50)
+	A2_ADD VARCHAR(50)
+	A1_AUX VARCHAR(50)
+	A2_AUX VARCHAR(50));
+	
+  Now your database is ready to be filled with data. 
+  
+3. Open a new terminal and write
+
+	$cd /home/finance/reports2sql
+	$python executor.py
+	
+   The second command will execute a python file that will fill the database with relevant features of each report row-wise.
+
+4. Now we need to clean our database. So we change full name of analyst to "first name and last name". Finally if
+   a1_pos="Senior VP", we change it to a1_pos="Senior Vice President" and if a1_pos="SVP- Senior Credit Officer", then we update 
+   it to a1_pos="Senior Vice President" and a1_aux="Senior Credit Officer"
+   	
+   	$python name_fetch.py
+   	$python refiner.py
+   	$python pos_fetch.py
+   	$python final_refiner.py
+   	
+5. Now database is cleaned up and is ready for analysis.
+
+
+For analysis, we need to connect MATLAB to the database and do the analysis. 
+Following are the steps helpful in connecting MATLAB to the postgresql database.
+
+1. Ensure that the MATLAB is closed. Run prefdir command on the command-line.
+1. Create a new file javaclasspath.txt and add the destination of JDBC driver 
+2. Now restart MATLAB write this command
+
+	conn=database('finance','finance','iof2014','org.postgresql.Driver','jdbc:postgresql://localhost:5432/finance');
+	a=isconnection(conn)
+   if a is 1, then you are connected else you did a mistake. For further reference see this
+   http://www.mathworks.com/help/database/ug/postgresql-jdbc-linux.html
+
+   	
+   	
+IMPORTANT THINGS:
+----------------
+1. Changin first name and second name to new columns
+2. Include capability for names with additional designation in name_fetch.py
+2. see analyst_name.py file
+3. See for full names having additional designations like CFA, CPA, Dr.
+4. Adding future oriention, negative positive to our database 
+5. Look at the outliers, methodology changes 
+6. Merge same names for eg. A.J. Sabatelle and Angelo Sabatelle
+7. Instead of database connection, read data from csv file
+8. send analyst_names.csv file
+
+

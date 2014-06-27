@@ -1,0 +1,39 @@
+Boston
+Buenos Aires
+Chicago
+Dallas
+Mexico City
+New York
+São Paulo
+San Francisco
+Toronto
+Dubai
+Frankfurt
+Johannesburg
+Limassol
+London
+Madrid
+Milan
+Moscow
+Paris
+Warsaw
+Beijing
+Hong Kong 
+Seoul
+Shanghai
+Singapore
+Sydney
+Tokyo
+India
+Giza
+Tel Aviv
+Montreal
+Toronto
+South San Francisco
+West Chester
+Edinburgh
+Grenoble
+Port Louis
+Saint Cloud
+Melbourne
+Shenzhen
